@@ -51,7 +51,7 @@ Be constructive and respectful. We're building something new and welcome good-fa
 
 ## Questions?
 
-Open a Discussion or reach out to [@rhatigan](https://github.com/rhatigan).
+Open a Discussion or reach out to [@rhatigan-agi](https://github.com/rhatigan-agi).
 
 ---
 
