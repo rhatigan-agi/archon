@@ -323,7 +323,7 @@ MIT
 
 <div align="center">
 
-**Built by [Jeff Rhatigan](https://github.com/rhatigan) at [Rhatigan Labs](https://rhatigan.ai)**
+**Built by [Jeff Rhatigan](https://github.com/rhatigan-agi) at [Rhatigan Labs](https://rhatigan.ai)**
 
 *A compiler doesn't have vibes. Neither should your AI coding workflow.*
 
