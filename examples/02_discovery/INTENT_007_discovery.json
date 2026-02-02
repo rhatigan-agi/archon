@@ -1,0 +1,110 @@
+{
+  "intent_id": "INTENT_007",
+  "intent_text": "Add a TODO list feature to Projects. This will need both backend and frontend work to track tasks and link them to a specific Project. It should be a list of Tasks scoped to the Project with status of Open, In-Progress, or Closed.",
+  "outcome": "success",
+  
+  "passes": {
+    "pass_1_framework": {
+      "status": "complete",
+      "detected": [
+        {"framework": "django", "confidence": 0.98, "scanner": "django_models"},
+        {"framework": "react", "confidence": 0.95, "scanner": "react_components"}
+      ]
+    },
+    "pass_2_surface": {
+      "status": "complete",
+      "source": "deterministic",
+      "confidence": "absolute"
+    },
+    "pass_3_ownership": {
+      "status": "complete",
+      "resolution_required": true
+    },
+    "pass_4_schema": {
+      "status": "complete",
+      "method": "ast_comparison",
+      "llm_used": false
+    }
+  },
+
+  "resolution_type": "frontend_scope",
+  "resolution_question": "## Frontend Discovery Incomplete\n\nYour intent introduces new frontend UI work, but no frontend component files were discovered.\n\nTo proceed, choose ONE option:\n\n1. **Provide a directory to scan for frontend components**\n   Example: `apps/frontend/`, `src/ui/`, `components/`\n   \n2. **Provide a specific file path to use**\n   Example: `apps/frontend/components/MyComponent.tsx`\n   \n3. **Skip frontend work** (confirm this intent should NOT include frontend changes)\n   Type: `skip`\n\n**Note**: This is not a failure - it's explicit uncertainty resolution.\nThe compiler will not proceed with guesses.",
+  "resolution_options": [
+    "Provide directory path",
+    "Provide file path", 
+    "Skip frontend work"
+  ],
+  "user_resolution": "apps/frontend/components/ProjectDetailModal.tsx",
+
+  "frontend_entry_points": [
+    "apps/frontend/components/ProjectDetailModal.tsx"
+  ],
+  
+  "backend_entry_points": [
+    "apps/api/views/project_views.py",
+    "apps/api/views/task_views.py",
+    "apps/api/views/auth_views.py",
+    "apps/api/views/user_views.py",
+    "apps/api/views/health_views.py"
+  ],
+
+  "existing_models": [
+    {
+      "name": "Project",
+      "file": "apps/api/models/project.py",
+      "source": "deterministic",
+      "confidence": "absolute"
+    },
+    {
+      "name": "ProjectTask", 
+      "file": "apps/api/models/project.py",
+      "source": "deterministic",
+      "confidence": "absolute"
+    }
+  ],
+
+  "model_fields": {
+    "Project": [
+      {"name": "id", "type": "UUIDField", "source": "deterministic", "confidence": "absolute"},
+      {"name": "name", "type": "CharField", "source": "deterministic", "confidence": "absolute"},
+      {"name": "description", "type": "TextField", "source": "deterministic", "confidence": "absolute"},
+      {"name": "created_at", "type": "DateTimeField", "source": "deterministic", "confidence": "absolute"},
+      {"name": "owner", "type": "ForeignKey", "related_model": "User", "source": "deterministic", "confidence": "absolute"}
+    ],
+    "ProjectTask": [
+      {"name": "id", "type": "UUIDField", "source": "deterministic", "confidence": "absolute"},
+      {"name": "project", "type": "ForeignKey", "related_model": "Project", "source": "deterministic", "confidence": "absolute"},
+      {"name": "title", "type": "CharField", "source": "deterministic", "confidence": "absolute"},
+      {"name": "description", "type": "TextField", "source": "deterministic", "confidence": "absolute"},
+      {"name": "status", "type": "CharField", "choices": ["Open", "In-Progress", "Closed"], "source": "deterministic", "confidence": "absolute"},
+      {"name": "assigned_to", "type": "ForeignKey", "related_model": "User", "source": "deterministic", "confidence": "absolute"},
+      {"name": "due_at", "type": "DateTimeField", "nullable": true, "source": "deterministic", "confidence": "absolute"},
+      {"name": "completed_at", "type": "DateTimeField", "nullable": true, "source": "deterministic", "confidence": "absolute"},
+      {"name": "created_at", "type": "DateTimeField", "source": "deterministic", "confidence": "absolute"}
+    ]
+  },
+
+  "schema_sufficiency": {
+    "Project": {"migration_required": false},
+    "ProjectTask": {"migration_required": false, "reason": "All required fields exist"}
+  },
+
+  "canonical_domains": [
+    {"canonical": "Project", "aliases": ["Project"]},
+    {"canonical": "Task", "aliases": ["TODO", "Activity", "ProjectTask"]}
+  ],
+
+  "ui_anchors": {
+    "todo_list_for_projects": "(Not found - no existing component)",
+    "project_detail_view": "(Not found - user provided: ProjectDetailModal.tsx)"
+  },
+
+  "examined_files": [
+    "apps/api/models/project.py",
+    "apps/api/models/user.py",
+    "apps/api/views/project_views.py",
+    "apps/api/views/task_views.py",
+    "apps/api/serializers/project_serializers.py",
+    "apps/frontend/components/ProjectDetailModal.tsx"
+  ]
+}

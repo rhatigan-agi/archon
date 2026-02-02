@@ -1,0 +1,41 @@
+# ===========================================
+# FILE: .archon/governance/l0.yaml
+# L0: Structural Invariants (NEVER overridable)
+# ===========================================
+
+version: 1
+tier: L0
+
+rules:
+  - id: GOV-005
+    name: "Phase scope enforcement"
+    description: "Files must be within phase's declared scope"
+    fixability: NEVER
+    
+  - id: GOV-006
+    name: "Generated file protection"
+    description: "No modifications to generated files"
+    fixability: NEVER
+    patterns:
+      - "**/migrations/**"
+      - "**/package-lock.json"
+      - "**/yarn.lock"
+      - "**/poetry.lock"
+      - "**/*_pb2.py"
+      - "**/dist/**"
+      - "**/build/**"
+    
+  - id: GOV-007
+    name: "File creation scope"
+    description: "No file creation outside phase scope"
+    fixability: NEVER
+    
+  - id: GOV-008
+    name: "Domain uniqueness"
+    description: "No duplicate domain definitions"
+    fixability: NEVER
+    
+  - id: GOV-009
+    name: "Canonical domain enforcement"
+    description: "Canonical domain names enforced"
+    fixability: NEVER

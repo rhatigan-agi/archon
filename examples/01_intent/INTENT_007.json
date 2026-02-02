@@ -1,0 +1,11 @@
+{
+  "id": "INTENT_007",
+  "created_at": "2026-02-01T15:53:06.419526",
+  "status": "completed",
+  "description": "Add a TODO list feature to Projects. This will need both backend and frontend work to track tasks and link them to a specific Project. It should be a list of Tasks scoped to the Project with status of Open, In-Progress, or Closed.",
+  "issue_path": ".archon/issues/INTENT_007/issue.md",
+  "discovery_path": ".archon/discovery/INTENT_007_discovery.json",
+  "plan_path": ".archon/plans/INTENT_007/",
+  "user": "developer",
+  "tags": ["feature", "backend", "frontend"]
+}

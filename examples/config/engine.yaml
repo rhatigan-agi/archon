@@ -1,0 +1,39 @@
+# ===========================================
+# FILE: .archon/engine.yaml  
+# Engine configuration
+# ===========================================
+
+version: 1
+
+engine:
+  provider: anthropic
+  model: claude-sonnet-4-20250514
+  
+  # Per-phase model overrides (optional)
+  # models:
+  #   discovery: claude-sonnet-4-20250514
+  #   planner: claude-sonnet-4-20250514
+  #   executor: claude-sonnet-4-20250514
+
+discovery:
+  languages:
+    - python
+    - typescript
+  exclude:
+    - "**/node_modules/**"
+    - "**/.venv/**"
+    - "**/dist/**"
+    - "**/build/**"
+    - "**/__pycache__/**"
+  
+  # Pass 4 (schema sufficiency) is always non-LLM
+  pass_4_deterministic: true
+
+execution:
+  mode: direct  # or "packet" for handoff to external tools
+  require_tests: true
+  auto_repair: false  # Prompt before entering repair loop
+
+governance:
+  strict_mode: true  # NEVER violations halt immediately
+  warn_on_l2: true   # Show L2 advisory warnings

@@ -1,0 +1,71 @@
+{
+  "intent_id": "INTENT_007",
+  "execution_id": "exec_a1b2c3d4",
+  "timestamp": "2026-02-01T17:45:22.891Z",
+  "verdict": "PASS",
+  "checks": [
+    {
+      "rule": "GOV-001",
+      "description": "No new models without explicit intent",
+      "status": "PASS",
+      "details": "No new models created"
+    },
+    {
+      "rule": "GOV-002", 
+      "description": "No auth/security changes without security intent",
+      "status": "PASS",
+      "details": "No auth-related files modified"
+    },
+    {
+      "rule": "GOV-003",
+      "description": "No production infra mutation",
+      "status": "PASS",
+      "details": "No infrastructure files modified"
+    },
+    {
+      "rule": "GOV-004",
+      "description": "No test deletion without justification",
+      "status": "PASS",
+      "details": "No tests deleted"
+    },
+    {
+      "rule": "GOV-005",
+      "description": "Files within phase scope",
+      "status": "PASS",
+      "details": "All modified files within declared scope"
+    },
+    {
+      "rule": "GOV-006",
+      "description": "No generated file modifications",
+      "status": "PASS",
+      "details": "No generated files modified"
+    },
+    {
+      "rule": "GOV-007",
+      "description": "No file creation outside scope",
+      "status": "PASS",
+      "details": "All created files within declared scope"
+    },
+    {
+      "rule": "GOV-008",
+      "description": "No duplicate domain definitions",
+      "status": "PASS",
+      "details": "No duplicate domains introduced"
+    },
+    {
+      "rule": "GOV-009",
+      "description": "Canonical domain names enforced",
+      "status": "PASS",
+      "details": "All domain references use canonical names"
+    }
+  ],
+  "files_checked": [
+    "apps/api/views/project_views.py",
+    "apps/api/serializers/project_serializers.py",
+    "apps/frontend/components/ProjectDetailModal.tsx",
+    "apps/frontend/components/TaskListItem.tsx",
+    "apps/frontend/components/TaskFormModal.tsx",
+    "apps/frontend/hooks/useProjectTasks.ts"
+  ],
+  "next_action": "commit"
+}

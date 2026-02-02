@@ -1,0 +1,45 @@
+# ===========================================
+# FILE: .archon/domains.yaml
+# Domain registry - canonical terminology
+# ===========================================
+
+version: 1
+
+domains:
+  Project:
+    canonical: true
+    presentation_aliases:
+      - Project
+      - Workspace
+    backend:
+      naming_rule: canonical_only
+    frontend:
+      allowed_aliases:
+        - Project
+        - Workspace
+
+  Task:
+    canonical: true
+    presentation_aliases:
+      - TODO
+      - Activity
+      - ProjectTask
+    backend:
+      naming_rule: canonical_only  # Backend MUST use "Task"
+    frontend:
+      allowed_aliases:
+        - Task
+        - TODO  # UI can say "TODO" for user-friendliness
+
+  User:
+    canonical: true
+    presentation_aliases:
+      - User
+      - Member
+      - TeamMember
+    backend:
+      naming_rule: canonical_only
+    frontend:
+      allowed_aliases:
+        - User
+        - Member

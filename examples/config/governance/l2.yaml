@@ -1,0 +1,25 @@
+# ===========================================
+# FILE: .archon/governance/l2.yaml
+# L2: Behavioral Signals (advisory only)
+# ===========================================
+
+version: 1
+tier: L2
+
+rules:
+  - id: ADV-001
+    name: "Complexity warning"
+    description: "Large file modifications detected"
+    threshold:
+      lines_changed: 200
+    
+  - id: ADV-002
+    name: "Scope expansion"
+    description: "Phase touches more files than typical"
+    threshold:
+      files_modified: 5
+    
+  - id: ADV-003
+    name: "Missing tests"
+    description: "Implementation without corresponding tests"
+    check: "test_file_exists"

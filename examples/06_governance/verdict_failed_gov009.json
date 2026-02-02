@@ -1,0 +1,37 @@
+{
+  "intent_id": "INTENT_007",
+  "execution_id": "exec_x9y8z7w6",
+  "timestamp": "2026-02-01T17:52:11.334Z",
+  "verdict": "FAIL",
+  "blocking_violation": {
+    "rule": "GOV-009",
+    "description": "Canonical domain names enforced",
+    "status": "FAIL",
+    "fixability": "NEVER",
+    "violation": {
+      "file": "apps/frontend/hooks/useProjectTasks.ts",
+      "line": 23,
+      "code": "interface TodoItem {",
+      "issue": "Backend class 'TodoItem' uses alias 'Todo'. Canonical domain: 'Task'"
+    },
+    "remediation": "Rename interface to 'TaskItem' to match canonical domain 'Task'",
+    "registry_entry": {
+      "canonical": "Task",
+      "aliases": ["TODO", "Activity", "ProjectTask"],
+      "backend_rule": "canonical_only"
+    }
+  },
+  "checks": [
+    {"rule": "GOV-001", "status": "PASS"},
+    {"rule": "GOV-002", "status": "PASS"},
+    {"rule": "GOV-003", "status": "PASS"},
+    {"rule": "GOV-004", "status": "PASS"},
+    {"rule": "GOV-005", "status": "PASS"},
+    {"rule": "GOV-006", "status": "PASS"},
+    {"rule": "GOV-007", "status": "PASS"},
+    {"rule": "GOV-008", "status": "PASS"},
+    {"rule": "GOV-009", "status": "FAIL", "fixability": "NEVER"}
+  ],
+  "next_action": "rollback_required",
+  "message": "Execution halted. NEVER-fixable violation encountered. Correct source and re-execute."
+}

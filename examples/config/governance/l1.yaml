@@ -1,0 +1,37 @@
+# ===========================================
+# FILE: .archon/governance/l1.yaml
+# L1: Project Policy (configurable)
+# ===========================================
+
+version: 1
+tier: L1
+
+rules:
+  - id: GOV-001
+    name: "Model creation control"
+    description: "No new models without explicit intent"
+    fixability: HUMAN
+    
+  - id: GOV-002
+    name: "Security change control"
+    description: "No auth/security changes without security intent"
+    fixability: HUMAN
+    watch_paths:
+      - "**/auth/**"
+      - "**/security/**"
+      - "**/permissions/**"
+    
+  - id: GOV-003
+    name: "Infrastructure protection"
+    description: "No production infra mutation from non-infra intent"
+    fixability: HUMAN
+    watch_paths:
+      - "**/infra/**"
+      - "**/deploy/**"
+      - "**/terraform/**"
+      - "**/k8s/**"
+    
+  - id: GOV-004
+    name: "Test deletion control"
+    description: "No test deletion without justification"
+    fixability: HUMAN
